@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>حملة حبنا الجميل 💖</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap");
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Cairo", sans-serif;
+      }
+
+      body {
+        background: linear-gradient(135deg, #ffe6e6, #ffb3b3);
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+        padding-top: 100px; /* Add padding for fixed header */
+      }
+
+      .header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        background: rgba(255, 255, 255, 0.9);
+        padding: 15px;
+        text-align: center;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+      }
+
+      .headline {
+        font-size: 2em;
+        color: #ff4d4d;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        margin-bottom: 10px;
+      }
+
+      .container {
+        max-width: 800px;
+        width: 100%;
+        background: rgba(255, 255, 255, 0.9);
+        border-radius: 20px;
+        padding: 20px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        margin-top: 20px;
+      }
+
+      .profile-image {
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        margin: 20px auto;
+        display: block;
+        border: 5px solid #ff4d4d;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        transition: transform 0.3s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .profile-image:hover {
+        transform: scale(1.05);
+      }
+
+      .heart {
+        position: absolute;
+        animation: float 2s ease-in-out;
+        font-size: 24px;
+        pointer-events: none;
+      }
+
+      .floating-text {
+        position: fixed;
+        animation: floatUp 3s ease-in-out;
+        font-size: 24px;
+        color: #ff4d4d;
+        pointer-events: none;
+        z-index: 1000;
+      }
+
+      .buttons {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        margin: 20px 0;
+      }
+
+      button {
+        background: linear-gradient(45deg, #ff4d4d, #ff8080);
+        color: white;
+        border: none;
+        padding: 15px 30px;
+        border-radius: 25px;
+        font-size: 1.2em;
+        cursor: pointer;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        width: 100%;
+        max-width: 400px;
+        margin: 0 auto;
+      }
+
+      button:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+      }
+
+      button:active {
+        transform: translateY(1px);
+      }
+
+      .message-box {
+        background: white;
+        padding: 20px;
+        border-radius: 15px;
+        margin-top: 20px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.5s ease, transform 0.5s ease;
+        max-height: 300px;
+        overflow-y: auto;
+        text-align: center;
+      }
+
+      .message-box.show {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .message-box p {
+        color: #ff4d4d;
+        font-size: 1.2em;
+        line-height: 1.6;
+        margin: 0;
+        white-space: pre-wrap;
+        word-wrap: break-word;
+      }
+
+      @keyframes float {
+        0% {
+          transform: translateY(0) scale(1);
+          opacity: 1;
+        }
+        100% {
+          transform: translateY(-100px) scale(0);
+          opacity: 0;
+        }
+      }
+
+      @keyframes floatUp {
+        0% {
+          transform: translateY(0);
+          opacity: 1;
+        }
+        100% {
+          transform: translateY(-100vh);
+          opacity: 0;
+        }
+      }
+
+      @media (max-width: 600px) {
+        .headline {
+          font-size: 1.5em;
+        }
+
+        .profile-image {
+          width: 150px;
+          height: 150px;
+        }
+
+        button {
+          font-size: 1em;
+          padding: 12px 24px;
+        }
+
+        .message-box {
+          max-height: 200px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <h1 class="headline">انتي عوض ربنا ليا يبنــوتي 💖</h1>
+    </div>
+
+    <div class="container">
+      <img
+        src="IMG-20250330-WA0022 - Copy.jpg"
+        alt="Profile"
+        class="profile-image"
+        id="profileImage"
+      />
+
+      <div class="buttons">
+        <button id="timeButton">قد إيه مر على حبنا؟ ⏰</button>
+        <button id="loveButton">رسالة حب عشوائية 💝</button>
+        <button id="apologyButton">رسالة اعتذار 💌</button>
+        <button id="reassuranceButton">لو قلقانة دوسي هنا 💝</button>
+      </div>
+
+      <div class="message-box" id="messageBox"></div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
